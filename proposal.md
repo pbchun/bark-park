@@ -25,3 +25,5 @@ I plan to use React Native as my new technology for the front-end to make this a
 
 ## Stretch Goals
 I would like to use Auth for dog owners to be able to sign in and have their own profiles with usernames and passwords
+
+I would also like to integrate push notifications for users that forget to check-out as they leave the park after a certain amount of time has passed since they checked-in
