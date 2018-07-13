@@ -20,7 +20,15 @@ From the landing page, the user will be able to sign into their account/profile.
   4) Add/update/remove their own and their dogs' profile information
 
 ## What technologies do you plan to use?
-I plan to use React Native as my new technology for the front-end to make this app mobile friendly. I will use Express, Knex.js, Postgres for the backend, with cypress for end-to-end testing.
+React Native
+Firebase (front-end)
+Node.js
+Express
+Knex.js
+PostgreSQL
+Heroku (back-end)
+Cypress
+React Native Elements OR React Native Material UI (CSS frameworks)
 
 
 ## Stretch Goals
