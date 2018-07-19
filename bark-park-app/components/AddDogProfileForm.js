@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, ScrollView, StyleSheet } from 'react-native'
+import { View, Text, ScrollView, StyleSheet, TextInput, Picker, TouchableOpacity } from 'react-native'
 import { FormLabel, FormInput, Button } from 'react-native-elements'
 
 
@@ -47,7 +47,6 @@ class AddDogProfileForm extends React.Component {
   }
 
 
-
   handleSubmit = (event) => {
     event.preventDefault()
     fetch('https://bark-park-db.herokuapp.com/dogprofile', {
@@ -62,36 +61,45 @@ class AddDogProfileForm extends React.Component {
   render() {
     return(
 
-      <ScrollView style={styles.addDogForm}>
+      <View style={styles.addDogForm}>
         <Text style={styles.addDogTitle}>Add A New Dog</Text> 
-        <FormLabel>Dog Name</FormLabel>
-        <FormInput onChangeText={this.handleChangeName}/>
 
-        <FormLabel>Picture</FormLabel>
-        <FormInput onChangeText={this.handleChangePicture}/>
+        <TextInput
+          style={styles.input}
+          placeholder="Dog Name"
+          onChangeText={this.handleChangeName}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Picture Link"
+          onChangeText={this.handleChangePicture}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Breed"
+          onChangeText={this.handleChangeBreed}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Age"
+          onChangeText={this.handleChangeAge}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Gender - M / F"
+          onChangeText={this.handleChangeGender}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Size - Small / Med / Large"
+          onChangeText={this.handleChangeSize}
+        />
 
-        <FormLabel>Breed</FormLabel>
-        <FormInput onChangeText={this.handleChangeBreed}/>
+        <TouchableOpacity style={styles.buttonContainer}>
+          <Text style={styles.buttonText} onPress={this.handleSubmit}>SUBMIT</Text>
+        </TouchableOpacity>
 
-        <FormLabel>Age</FormLabel>
-        <FormInput onChangeText={this.handleChangeAge}/>
-
-        <FormLabel>Gender</FormLabel>
-        <FormInput onChangeText={this.handleChangeGender} placeholder="M/F" />
-
-        <FormLabel>Size</FormLabel>
-        <FormInput style={styles.lastFormInput} onChangeText={this.handleChangeSize} placeholder="Small/Med/Large" /> 
-
-      <Button
-        small
-        raised
-        onPress={this.handleSubmit}
-        title="Submit"
-        color="white"
-        containerStyle={{ marginTop: 20 }}
-      />
-
-    </ScrollView>
+    </View>
 
     )
   }
@@ -105,10 +113,30 @@ const styles = StyleSheet.create({
   addDogTitle: {
     fontSize: 20,
     alignSelf: 'center',
-    paddingTop: 40
+    paddingTop: 40,
+    paddingBottom: 20
   },
   lastFormInput: {
     marginBottom: 50
+  },
+  input: {
+    width: 200,
+    height: 40,
+    backgroundColor: "rgba(255,255,255,0.3)",
+    marginBottom: 20,
+    color: "#6c6c6d",
+    alignSelf: 'center'
+  },
+  buttonContainer: {
+    backgroundColor: '#6079a3',
+    width: 200,
+    paddingVertical: 15,
+    alignSelf: 'center'
+  },
+  buttonText: {
+    textAlign: 'center',
+    color: '#3d3d3d',
+    fontWeight: "700"
   }
 })
 

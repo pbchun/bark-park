@@ -1,20 +1,15 @@
 import React from 'react'
 import AddDogParkForm from './AddDogParkForm'
-import { AppRegistry, Button, StyleSheet, View, Text, ScrollView, ActivityIndicator, Image, Dimensions, TouchableOpacity, TouchableHighlight } from 'react-native'
-import Modal from 'react-native-modal'
+import { Button, StyleSheet, View, Text, ScrollView } from 'react-native'
+import { Actions } from 'react-native-router-flux'
 
 class DogParkList extends React.Component {
   constructor(props) {
     super(props)
       this.state = {
         dogParks: [],
-        isModalVisible: false
       }
   }
-
-  toggleModal = () =>
-  this.setState({ isModalVisible: !this.state.isModalVisible });
-
 
   listDogParks = () => {
     fetch('https://bark-park-db.herokuapp.com/dogpark')
@@ -45,12 +40,17 @@ class DogParkList extends React.Component {
   
   render() {
     return (
-      <ScrollView>
+      <ScrollView style={styles.container}>
         <Text style={styles.title}>Dog Parks Around Denver:</Text>
           {this.state.dogParks.map(park => {
             return(
               <View>
-                <Text style={styles.parkName}>{park.parkName}</Text>
+                <Text 
+                  style={styles.parkName}
+                  onPress={() => Actions.SpecificDogPark({})}
+                  >
+                  {park.parkName}
+                </Text>
                 <Text style={styles.address}>{park.address}</Text>
                 <Button
                   onPress={this.deleteDogPark}
@@ -61,25 +61,6 @@ class DogParkList extends React.Component {
             )
           })}
 
-
-          <TouchableHighlight onPress={this.toggleModal}>
-            <Text>Show Modal</Text>
-          </TouchableHighlight>
-          <Modal 
-          isVisible={this.state.isModalVisible}
-          transparent={false}
-          presentationStyle='fullScreen'
-          >
-            <View style={{ flex: 1 }}>
-              <Text>Hello!</Text>
-              <TouchableHighlight onPress={this.toggleModal}>
-                <Text>Hide me!</Text>
-              </TouchableHighlight>
-            </View>
-          </Modal>
-
-
-
         <AddDogParkForm listDogParks={this.listDogParks} />
       </ScrollView>
     )
@@ -88,6 +69,12 @@ class DogParkList extends React.Component {
 
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fcfcfc",
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   title: {
     fontSize: 30,
     paddingTop: 20,

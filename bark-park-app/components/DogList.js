@@ -1,8 +1,8 @@
 import React from 'react'
-import AddDogProfileForm from './AddDogProfileForm'
-import EditDogInfoModal from './EditDogInfoModal'
-import { View, Text, StyleSheet, ScrollView, Button } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, Button, KeyboardAvoidingView, Modal } from 'react-native'
 import { Avatar } from 'react-native-elements'
+import { StackNavigator } from 'react-navigation'
+
 
 class DogList extends React.Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class DogList extends React.Component {
     this.listDogs()
   }
 
-    deleteDog = (dog, event) => {
+  deleteDog = (dog, event) => {
     fetch(`https://bark-park-db.herokuapp.com/${dog.id}`, {
       method: 'DELETE'
     })
@@ -41,8 +41,7 @@ class DogList extends React.Component {
 
   render() {
     return(
-      <ScrollView>
-        {/* <Text style={styles.dogListTitle}>Your Dogs:</Text> */}
+      <View>
         {this.state.dogList.map(dog => {
           return(
             <View style={styles.dogList} key={dog.id}>
@@ -57,20 +56,16 @@ class DogList extends React.Component {
               <Text style={styles.eachDog}>Age: {dog.age}</Text>
               <Text style={styles.eachDog}>Gender: {dog.gender}</Text>
               <Text style={styles.eachDog}>Size: {dog.size}</Text>
-              <View>
-                {/* <EditDogInfoModal name={dog.name} picture={dog.picture} breed={dog.breed} age={dog.age} gender={dog.gender} size={dog.size} listDogs={this.listDogs} /> */}
-              </View>
+
               <Button
-                  onPress={this.deleteDogPark}
-                  title="Delete"
+                  onPress={this.deleteDog}
+                  title="Remove"
                   color="#841584"
                 /> 
             </View>
           )
         })}
-        
-        <AddDogProfileForm listDogs={this.listDogs} />
-      </ScrollView>
+      </View>
     )
   }
 }
@@ -79,16 +74,11 @@ const styles = StyleSheet.create({
   dogListTitle: {
     fontSize: 25,
     alignSelf: 'center',
-    paddingBottom: 30
+    // paddingBottom: 30
   },
   dogList: {
-    alignSelf: 'center',
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: 'darkgrey',
-    borderRadius: 25,
-    padding: 20,
-    width: 200
+    alignItems: 'center',
+    marginBottom: 15
   },
   dogPic: {
     alignSelf: 'center',

@@ -1,6 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Text } from 'react-native'
-import { FormLabel, FormInput, Button } from 'react-native-elements'
+import { View, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native'
 
 
 class AddDogParkForm extends React.Component {
@@ -35,22 +34,23 @@ class AddDogParkForm extends React.Component {
 
   render() {
     return(
-      <View>
+      <View style={styles.addParkForm}>
         <Text style={styles.addParkTitle}>Add A Dog Park</Text>
-        <FormLabel>Dog Park Name</FormLabel>
-        <FormInput onChangeText={this.handleChangeName}/>
-
-        <FormLabel>Dog Park Address</FormLabel>
-        <FormInput onChangeText={this.handleChangeAddress}/>
-
-        <Button
-          small
-          raised
-          onPress={this.handleSubmit}
-          title="Submit"
-          color="white"
-          containerStyle={{ marginTop: 20 }}
+        
+        <TextInput
+          style={styles.input}
+          placeholder="Dog Park Name"
+          onChangeText={this.handleChangeName}
         />
+        <TextInput
+          style={styles.input}
+          placeholder="Address"
+          onChangeText={this.handleChangeAddress}
+        />
+
+        <TouchableOpacity style={styles.buttonContainer}>
+          <Text style={styles.buttonText} onPress={this.handleSubmit}>SUBMIT</Text>
+        </TouchableOpacity>
         
       </View>
     )
@@ -58,10 +58,35 @@ class AddDogParkForm extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  addParkForm: {
+    paddingBottom: 150,
+    paddingTop: 30
+  },
   addParkTitle: {
     fontSize: 20,
     alignSelf: 'center',
-    paddingTop: 40
+    paddingTop: 40,
+    paddingBottom: 25
+  },
+  input: {
+    width: 180,
+    height: 40,
+    backgroundColor: "rgba(255,255,255,0.3)",
+    marginBottom: 20,
+    color: "#6c6c6d",
+    alignSelf: 'center'
+  },
+  buttonContainer: {
+    backgroundColor: '#6079a3',
+    width: 200,
+    paddingVertical: 15,
+    alignSelf: 'center',
+    marginBottom: 40
+  },
+  buttonText: {
+    textAlign: 'center',
+    color: '#3d3d3d',
+    fontWeight: "700",
   }
 })
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import DogList from './DogList'
-import { View, Text, StyleSheet } from 'react-native'
+import AddDogProfileForm from './AddDogProfileForm'
+import { ScrollView, Text, StyleSheet } from 'react-native'
 
 class OwnerProfile extends React.Component {
   constructor(props){
@@ -26,15 +27,19 @@ class OwnerProfile extends React.Component {
   
   render() {
     return(
-      <View>
+      <ScrollView style={styles.container}>
         <Text style={styles.ownerTitle}>Welcome Peter C!</Text>
         <DogList />
-      </View>
+        <AddDogProfileForm listDogs={this.listDogs} />
+      </ScrollView>
     )
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#fcfcfc'
+  },
   ownerTitle: {
     fontSize: 30,
     alignSelf: 'center',
