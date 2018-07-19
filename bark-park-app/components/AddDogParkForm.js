@@ -1,12 +1,12 @@
 import React from 'react'
-import { View, StyleSheet, Text, Button } from 'react-native'
-import { FormLabel, FormInput } from 'react-native-elements'
+import { View, StyleSheet, Text } from 'react-native'
+import { FormLabel, FormInput, Button } from 'react-native-elements'
 
 
 class AddDogParkForm extends React.Component {
   constructor(props){
     super(props)
-    this.state={
+    this.state = {
       parkName: "",
       address: ""
     }
@@ -44,18 +44,14 @@ class AddDogParkForm extends React.Component {
         <FormInput onChangeText={this.handleChangeAddress}/>
 
         <Button
+          small
+          raised
           onPress={this.handleSubmit}
           title="Submit"
           color="white"
-          buttonStyle= {{
-            backgroundColor: 'blue',
-            width: 100,
-            borderColor: 'transparent',
-            borderWidth: .5,
-            borderRadius: 20
-          }}
           containerStyle={{ marginTop: 20 }}
         />
+        
       </View>
     )
   }

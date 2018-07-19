@@ -1,15 +1,20 @@
 import React from 'react'
 import AddDogParkForm from './AddDogParkForm'
-import { AppRegistry, Button, StyleSheet, View, Text, ScrollView, ActivityIndicator, Image, Dimensions } from 'react-native'
-
+import { AppRegistry, Button, StyleSheet, View, Text, ScrollView, ActivityIndicator, Image, Dimensions, TouchableOpacity, TouchableHighlight } from 'react-native'
+import Modal from 'react-native-modal'
 
 class DogParkList extends React.Component {
   constructor(props) {
     super(props)
       this.state = {
         dogParks: [],
+        isModalVisible: false
       }
   }
+
+  toggleModal = () =>
+  this.setState({ isModalVisible: !this.state.isModalVisible });
+
 
   listDogParks = () => {
     fetch('https://bark-park-db.herokuapp.com/dogpark')
@@ -40,23 +45,43 @@ class DogParkList extends React.Component {
   
   render() {
     return (
-      <View>
-      <Text style={styles.title}>Dog Parks Around Denver:</Text>
-        {this.state.dogParks.map(park => {
-          return(
-            <View>
-              <Text style={styles.parkName}>{park.parkName}</Text>
-              <Text style={styles.address}>{park.address}</Text>
-              <Button
-                onPress={this.deleteDogPark}
-                title="Delete"
-                color="#841584"
-              />
+      <ScrollView>
+        <Text style={styles.title}>Dog Parks Around Denver:</Text>
+          {this.state.dogParks.map(park => {
+            return(
+              <View>
+                <Text style={styles.parkName}>{park.parkName}</Text>
+                <Text style={styles.address}>{park.address}</Text>
+                <Button
+                  onPress={this.deleteDogPark}
+                  title="Delete"
+                  color="#841584"
+                />
+              </View>
+            )
+          })}
+
+
+          <TouchableHighlight onPress={this.toggleModal}>
+            <Text>Show Modal</Text>
+          </TouchableHighlight>
+          <Modal 
+          isVisible={this.state.isModalVisible}
+          transparent={false}
+          presentationStyle='fullScreen'
+          >
+            <View style={{ flex: 1 }}>
+              <Text>Hello!</Text>
+              <TouchableHighlight onPress={this.toggleModal}>
+                <Text>Hide me!</Text>
+              </TouchableHighlight>
             </View>
-          )
-        })}
+          </Modal>
+
+
+
         <AddDogParkForm listDogParks={this.listDogParks} />
-      </View>
+      </ScrollView>
     )
   }
 }

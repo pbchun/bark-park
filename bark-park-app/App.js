@@ -1,30 +1,26 @@
 import React from 'react'
 // import Header from './components/Header'
 import Home from './components/Home'
-// import Login from './components/Login'
+import LoginModal from './components/LoginModal'
 import OwnerProfile from './components/OwnerProfile'
 import DogParkList from './components/DogParkList'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Text, NavigatorIOS } from 'react-native'
 import { Scene, Router, Actions, Reducer, ActionConst, Overlay, Tabs, Modal, Drawer, Stack, Lightbox, } from 'react-native-router-flux'
+import { Input } from 'react-native-elements'
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 
-const TabIcon = ({ selected, title }) => {
-  return(
-    <Text style={{color: selected ? 'blue' :'black'}}>{title}</Text>
-  )
-}
 
 const App = () => {
     return (
-      <Router>
+      <Router navigationBarStyle={styles.navBar}>
         <Scene key="root">
-
           <Scene 
             key="tabbar"
             tabs
-            tabBarStyle={{backgroundColor: 'darkgray'}}
+            tabBarStyle={{backgroundColor: '#6079a3'}}
           >
-            <Scene key="home" title="Home" icon={TabIcon}>
+            <Scene style={styles.navTitle} component={Home} key="home" title="Home">
               <Scene 
               key="home"
               component={Home}
@@ -32,14 +28,21 @@ const App = () => {
               initial
               />
             </Scene>
-            <Scene key="ownerProfile" title="My Profile" icon={TabIcon}>
+            <Scene style={styles.navTitle} component={LoginModal} key="login" title="Login">
+              <Scene 
+                key="login"
+                component={LoginModal}
+                title="Login"
+              />
+            </Scene>
+            <Scene style={styles.navTitle} component={OwnerProfile} key="ownerProfile" title="My Profile">
               <Scene 
                 key="ownerProfile"
                 component={OwnerProfile}
                 title="Profile"
               />
             </Scene>
-            <Scene key="dogpark" title="Dog Parks" icon={TabIcon}>
+            <Scene style={styles.navTitle} component={DogParkList} key="dogpark" title="Dog Parks">
               <Scene 
                 key="dogpark"
                 component={DogParkList}
@@ -47,16 +50,24 @@ const App = () => {
               />
             </Scene>
           </Scene>
-
-          {/* <Scene 
-          key="login"
-          component={Login}
-          >
-          </Scene> */}
+          <Scene
+            key="modal"
+            component={LoginModal}
+          />
 
         </Scene>
       </Router>
     )
 }
+
+const styles = StyleSheet.create({
+  navBar: {
+    backgroundColor: '#6079a3', 
+    paddingTop: 0 
+  },
+  navTitle: {
+    color: 'white'
+  }
+})
 
 export default App
