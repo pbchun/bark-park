@@ -71,9 +71,8 @@ class DogParkList extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fcfcfc",
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#f7f7f7",
+    alignItems: 'center'
   },
   title: {
     fontSize: 30,

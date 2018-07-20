@@ -1,6 +1,6 @@
 import React from 'react'
 import CheckInOut from './CheckInOut'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 import { Avatar } from 'react-native-elements'
 
 
@@ -26,11 +26,24 @@ class SpecificDogPark extends React.Component {
     this.listAllDogs()
   }
 
+  checkInButton = () => {
+
+  }
+
   render() {
     return(
-      <View>
+      <ScrollView>
         <Text style={styles.title}>Rail Yard Dog Park</Text>
-        <CheckInOut />
+
+        <TouchableOpacity style={styles.checkInButtonContainer}>
+          <Text style={styles.checkInButton} onPress={this.checkIn}>Check-in</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.checkOutButtonContainer}>
+          <Text style={styles.checkOutButton} onPress={this.checkOut}>Check-out</Text>
+        </TouchableOpacity>
+
+        {/* <CheckInOut /> */}
         {this.state.allDogs.map(dog => {
           return(
             <View style={styles.dogList} key={dog.id}>
@@ -48,7 +61,7 @@ class SpecificDogPark extends React.Component {
               </View>
           )
         })}
-      </View>
+      </ScrollView>
     )
   }
 }
@@ -56,8 +69,10 @@ class SpecificDogPark extends React.Component {
 const styles = StyleSheet.create({
   title: {
     textAlign: 'center',
-    fontSize: 20,
-    paddingBottom: 30
+    fontSize: 30,
+    paddingBottom: 20,
+    paddingTop: 20,
+    fontWeight: 'bold'
   },
   dogList: {
     alignItems: 'center',
@@ -69,6 +84,30 @@ const styles = StyleSheet.create({
   },
   eachDog: {
     alignSelf: 'center'
+  },
+  checkInButtonContainer: {
+    backgroundColor: '#57BC90',
+    width: 100,
+    paddingVertical: 15,
+    alignSelf: 'center',
+    marginBottom: 10
+  },
+  checkInButton: {
+    textAlign: 'center',
+    color: '#3d3d3d',
+    fontWeight: "700"
+  },
+  checkOutButtonContainer: {
+    backgroundColor: '#CF6766',
+    width: 100,
+    paddingVertical: 15,
+    alignSelf: 'center',
+    marginBottom: 30
+  },
+  checkOutButton: {
+    textAlign: 'center',
+    color: '#3d3d3d',
+    fontWeight: "700"
   }
 })
 

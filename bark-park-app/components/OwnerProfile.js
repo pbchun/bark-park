@@ -38,12 +38,13 @@ class OwnerProfile extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fcfcfc'
+    backgroundColor: '#f7f7f7'
   },
   ownerTitle: {
     fontSize: 30,
     alignSelf: 'center',
-    paddingBottom: 30
+    paddingBottom: 30,
+    paddingTop: 20
   }
 })
 

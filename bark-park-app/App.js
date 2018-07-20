@@ -15,7 +15,7 @@ const App = () => {
       <Router navigationBarStyle={styles.navBar}>
         <Scene key="root">
         
-          <Scene style={styles.navTab} key="tabbar" tabs tabBarStyle={{backgroundColor: '#6079a3'}}>
+          <Scene style={styles.navTab} key="tabbar" tabs tabBarStyle={{backgroundColor: '#5b89d3'}}>
               <Scene key="home" component={Home} initial />
               <Scene key="ownerProfile" component={OwnerProfile} />
               <Scene key="dogpark" component={DogParkList} />
@@ -32,7 +32,7 @@ const App = () => {
 
 const styles = StyleSheet.create({
   navBar: {
-    backgroundColor: '#6079a3', 
+    backgroundColor: '#5b89d3', 
     paddingTop: 0,
   },
   navTitle: {

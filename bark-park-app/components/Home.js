@@ -25,7 +25,7 @@ class Home extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fcfcfc',
+    backgroundColor: '#f7f7f7',
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -41,10 +41,21 @@ const styles = StyleSheet.create({
     padding: 40,
     alignSelf: 'center'
   },
+  buttonContainer: {
+    backgroundColor: '#6079a3',
+    width: 200,
+    paddingVertical: 15,
+    alignSelf: 'center',
+    marginBottom: 40
+  },
   loginLink: {
     fontSize: 20,
     alignSelf: 'center',
-    paddingTop: 100
+    paddingTop: 100,
+  },
+  buttonText: {
+    textAlign: 'center',
+    color: '#FFF'
   }
 })
 
