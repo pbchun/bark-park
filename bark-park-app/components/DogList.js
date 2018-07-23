@@ -20,6 +20,7 @@ class DogList extends React.Component {
           dogList: data.dogprofile
         })
       })
+      .then(console.log())
   }
 
   componentDidMount() {

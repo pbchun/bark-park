@@ -8,7 +8,8 @@ class SpecificDogPark extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      allDogs: []
+      allDogs: [],
+      myDog: []
     }
   }
 
@@ -26,7 +27,15 @@ class SpecificDogPark extends React.Component {
     this.listAllDogs()
   }
 
-  checkInButton = () => {
+  checkIn = () => {
+    fetch('https://bark-park-db.herokuapp.com/dogprofile/1')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          myDog: data.dogproile.id === 1
+        })
+      })
+      .then(response => {this.props.listAllDogs()})
 
   }
 
@@ -43,8 +52,11 @@ class SpecificDogPark extends React.Component {
           <Text style={styles.checkOutButton} onPress={this.checkOut}>Check-out</Text>
         </TouchableOpacity>
 
-        {/* <CheckInOut /> */}
-        {this.state.allDogs.map(dog => {
+        {this.state.allDogs.filter(dog => {
+          return (
+            dog.id >= 2
+          )
+        }).map(dog => {
           return(
             <View style={styles.dogList} key={dog.id}>
               <Avatar 

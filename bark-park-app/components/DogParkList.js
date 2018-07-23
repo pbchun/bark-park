@@ -25,18 +25,18 @@ class DogParkList extends React.Component {
       this.listDogParks();
   }
 
-  deleteDogPark = (park, event) => {
-    fetch(`https://bark-park-db.herokuapp.com/${park.id}`, {
-      method: 'DELETE'
-    })
-    .then(data => data.text)
-    const dogpark = this.state.dogParks.slice()
-    const index = dogpark.indexOf(park)
-    dogpark.splice(index, 1)
-    this.setState({
-      dogParks: dogpark
-    })
-  }
+  // deleteDogPark = (park, event) => {
+  //   fetch(`https://bark-park-db.herokuapp.com/${park.id}`, {
+  //     method: 'DELETE'
+  //   })
+  //   .then(data => data.text)
+  //   const dogpark = this.state.dogParks.slice()
+  //   const index = dogpark.indexOf(park)
+  //   dogpark.splice(index, 1)
+  //   this.setState({
+  //     dogParks: dogpark
+  //   })
+  // }
   
   render() {
     return (
@@ -52,11 +52,11 @@ class DogParkList extends React.Component {
                   {park.parkName}
                 </Text>
                 <Text style={styles.address}>{park.address}</Text>
-                <Button
+                {/* <Button
                   onPress={this.deleteDogPark}
                   title="Delete"
                   color="#841584"
-                />
+                /> */}
               </View>
             )
           })}
