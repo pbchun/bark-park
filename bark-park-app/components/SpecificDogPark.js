@@ -1,7 +1,9 @@
 import React from 'react'
-import CheckInOut from './CheckInOut'
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
+import CheckIn from './CheckIn'
+import CheckOut from './CheckOut'
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Button, ImageBackground } from 'react-native'
 import { Avatar } from 'react-native-elements'
+import { Actions } from 'react-native-router-flux'
 
 
 class SpecificDogPark extends React.Component {
@@ -14,55 +16,55 @@ class SpecificDogPark extends React.Component {
   }
 
   listAllDogs = () => {
-    fetch('https://bark-park-db.herokuapp.com/dogprofile')
+    return fetch('https://bark-park-db.herokuapp.com/dogprofile')
       .then(response => response.json())
       .then(data => {
         this.setState({
           allDogs: data.dogprofile
         })
       })
+    
   }
 
   componentDidMount() {
     this.listAllDogs()
+    console.log("Hi")
   }
 
-  checkIn = () => {
-    fetch('https://bark-park-db.herokuapp.com/dogprofile/1')
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          myDog: data.dogproile.id === 1
-        })
-      })
-      .then(response => {this.props.listAllDogs()})
+  filterDogs = (dogId) => {
+    return this.state.allDogs.filter(dog => 
+        dog.checkedIn === true
+    )
+  }
+
+
+  checkIn = (dog) => {
+    console.log("Here", dog)
+    const newDogs = this.state.checkedInDogs.concat(dog)
+    this.setState({
+      checkedInDogs: newDogs
+    })
 
   }
 
   render() {
     return(
-      <ScrollView>
+      <View style={styles.container}>
+      <ImageBackground source={require('../public/assets/railyard1.jpg')} style={styles.railyardImg}>
         <Text style={styles.title}>Rail Yard Dog Park</Text>
+        </ImageBackground>
+        {/* <CheckIn id={dog.id} name={dog.name} picture={dog.picture} breed={dog.breed} age={dog.age} gender={dog.gender} size={dog.size} listAllDogs={this.listAllDogs} /> */}
+      <ScrollView>
+        <CheckIn checkIn={this.checkIn} updateDogs={this.componentDidMount} listAllDogs={this.listAllDogs} />
+        <CheckOut />
 
-        <TouchableOpacity style={styles.checkInButtonContainer}>
-          <Text style={styles.checkInButton} onPress={this.checkIn}>Check-in</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.checkOutButtonContainer}>
-          <Text style={styles.checkOutButton} onPress={this.checkOut}>Check-out</Text>
-        </TouchableOpacity>
-
-        {this.state.allDogs.filter(dog => {
-          return (
-            dog.id >= 2
-          )
-        }).map(dog => {
+        {this.filterDogs().map(dog => {
           return(
             <View style={styles.dogList} key={dog.id}>
               <Avatar 
                 large 
                 rounded 
-                source={{uri: `{dog.picture}`}}
+                source={{uri: `${dog.picture}`}}
                 style={styles.dogPic} 
               />
               <Text style={styles.dogName}>{dog.name}</Text>
@@ -70,25 +72,38 @@ class SpecificDogPark extends React.Component {
               <Text style={styles.eachDog}>Age: {dog.age}</Text>
               <Text style={styles.eachDog}>Gender: {dog.gender}</Text>
               <Text style={styles.eachDog}>Size: {dog.size}</Text>
+
+              {/* <Button
+                  onPress={this.deleteDog}
+                  title="Remove"
+                  color="#841584"
+                />  */}
+
               </View>
           )
         })}
+
       </ScrollView>
+      </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
   title: {
     textAlign: 'center',
     fontSize: 30,
-    paddingBottom: 20,
-    paddingTop: 20,
-    fontWeight: 'bold'
+    paddingBottom: 215,
+    paddingTop: 10,
+    fontWeight: 'bold',
+    color: 'rgba(0,0,0,0.5)'
   },
   dogList: {
     alignItems: 'center',
-    paddingBottom: 20
+    marginBottom: 50
   },
   dogName: {
     alignSelf: 'center',
@@ -97,30 +112,24 @@ const styles = StyleSheet.create({
   eachDog: {
     alignSelf: 'center'
   },
-  checkInButtonContainer: {
-    backgroundColor: '#57BC90',
-    width: 100,
-    paddingVertical: 15,
-    alignSelf: 'center',
-    marginBottom: 10
-  },
-  checkInButton: {
-    textAlign: 'center',
-    color: '#3d3d3d',
-    fontWeight: "700"
-  },
-  checkOutButtonContainer: {
-    backgroundColor: '#CF6766',
-    width: 100,
-    paddingVertical: 15,
-    alignSelf: 'center',
-    marginBottom: 30
-  },
-  checkOutButton: {
-    textAlign: 'center',
-    color: '#3d3d3d',
-    fontWeight: "700"
+  railyardImg: {
+    height: 250,
+    width: 400
   }
 })
 
 export default SpecificDogPark
+
+
+  // deleteDog = (dog, event) => {
+  //   fetch(`https://bark-park-db.herokuapp.com/${dog.id}`, {
+  //     method: 'DELETE'
+  //   })
+  //   .then(data => data.text)
+  //   const dogs = this.state.allDogs.slice()
+  //   const index = dogs.indexOf(dog)
+  //   dogs.splice(index, 1)
+  //   this.setState({
+  //     allDogs: dogs
+  //   })
+  // }

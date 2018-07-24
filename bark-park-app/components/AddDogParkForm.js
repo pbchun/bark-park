@@ -59,7 +59,7 @@ class AddDogParkForm extends React.Component {
 
 const styles = StyleSheet.create({
   addParkForm: {
-    paddingBottom: 150,
+    // paddingBottom: 150,
     paddingTop: 30
   },
   addParkTitle: {
@@ -81,12 +81,11 @@ const styles = StyleSheet.create({
     width: 200,
     paddingVertical: 15,
     alignSelf: 'center',
-    marginBottom: 40
+    marginBottom: 80
   },
   buttonText: {
     textAlign: 'center',
-    color: '#FFF',
-    fontWeight: "700",
+    color: '#FFF'
   }
 })
 

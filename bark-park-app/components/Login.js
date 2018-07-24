@@ -33,7 +33,7 @@ const Login = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f7f7f7",
+    backgroundColor: "#FFF",
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -55,8 +55,8 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     textAlign: 'center',
-    color: "#3d3d3d",
-    fontWeight: "700"
+    color: "#FFF",
+    // fontWeight: "700"
   }
 })
 

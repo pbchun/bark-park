@@ -1,6 +1,7 @@
 import React from 'react'
 import DogList from './DogList'
 import AddDogProfileForm from './AddDogProfileForm'
+import FooterTabs from './FooterTabs'
 import { ScrollView, Text, StyleSheet, View, TouchableOpacity } from 'react-native'
 import { Avatar } from 'react-native-elements'
 import { Actions } from 'react-native-router-flux'
@@ -47,70 +48,61 @@ class OwnerProfile extends React.Component {
     }
   }
   
-  getYourDogs() {
-    if (this.state.dogList.length !== 0) {
-      var filteredDogList = this.state.dogList.filter(dog => dog.id === 1)
-      return (
-        JSON.parse(JSON.stringify(filteredDogList[0].name))
-        // JSON.parse(JSON.stringify(filteredDogList[0].breed)),
-        // JSON.parse(JSON.stringify(filteredDogList[0].age)),
-        // JSON.parse(JSON.stringify(filteredDogList[0].gender)),
-        // JSON.parse(JSON.stringify(filteredDogList[0].size))
-      )
-    }
-  }
-
   render() {
     return(
       <ScrollView style={styles.container}>
-        <Text style={styles.ownerTitle}>Welcome {this.getOwnerName()}!</Text>
+        <Text style={styles.ownerTitle}>Welcome {this.getOwnerName()}</Text>
 
-          <View style={styles.myDogList} >
-            <Avatar 
-              large 
-              rounded 
-              source={{uri: `{dog.picture}`}}
-              style={styles.dogPic} 
-            />
-            <Text style={styles.dogName}>{this.getYourDogs()}</Text>
-            {/* <Text style={styles.eachDog}>{dog.breed}</Text>
-            <Text style={styles.eachDog}>Age: {dog.age}</Text>
-            <Text style={styles.eachDog}>Gender: {dog.gender}</Text>
-            <Text style={styles.eachDog}>Size: {dog.size}</Text> */}
-
-            {/* <Button
-                onPress={this.deleteDog}
-                title="Remove"
-                color="#841584"
-              />  */}
+          <View style={styles.myDogList}>
+            {this.state.dogList.filter(dog => {
+              return(
+                dog.id === 1
+              )
+            }).map(dog => {
+              return(
+                <View>
+                <Avatar 
+                large 
+                rounded 
+                source={{uri: `${dog.picture}`}}
+                style={styles.dogPic} 
+              />
+              <Text style={styles.dogName}>{dog.name}</Text>
+              <Text style={styles.eachDog}>{dog.breed}</Text>
+              <Text style={styles.eachDog}>Age: {dog.age}</Text>
+              <Text style={styles.eachDog}>Gender: {dog.gender}</Text>
+              <Text style={styles.eachDog}>Size: {dog.size}</Text>
+              </View>
+              )
+            })
+            }
           </View>
 
-        {/* <DogList /> */}
-        {/* <AddDogProfileForm listDogs={this.listDogs} /> */}
         <TouchableOpacity style={styles.buttonContainer}>
-          <Text style={styles.buttonText} onPress={Actions.AddDogProfileForm}>Add a New Dog</Text>
+          <Text style={styles.buttonText} onPress={Actions.AddDogProfileForm}>ADD A NEW DOG</Text>
         </TouchableOpacity>
+      <FooterTabs style={styles.footer} />
       </ScrollView>
-    )
-  }
+  )
 }
-
+}
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#f7f7f7'
+    backgroundColor: '#FFF'
   },
   ownerTitle: {
     fontSize: 30,
     alignSelf: 'center',
     paddingBottom: 30,
-    paddingTop: 20
+    paddingTop: 50
   },
   buttonContainer: {
     backgroundColor: '#6079a3',
     width: 200,
     paddingVertical: 15,
     alignSelf: 'center',
-    marginBottom: 40
+    marginBottom: 123,
+    marginTop: 50
   },
   buttonText: {
     textAlign: 'center',
@@ -118,11 +110,18 @@ const styles = StyleSheet.create({
   },
   myDogList: {
     alignSelf: 'center',
-    marginBottom: 15
+    marginBottom: 100,
+    paddingTop: 35
   },
   dogName: {
     alignSelf: 'center',
     paddingBottom: 4
+  },
+  eachDog: {
+    alignSelf: 'center'
+  },
+  footer: {
+    position: 'absolute'
   }
 })
 

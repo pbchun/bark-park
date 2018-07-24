@@ -1,6 +1,7 @@
 import React from 'react'
 import AddDogParkForm from './AddDogParkForm'
-import { Button, StyleSheet, View, Text, ScrollView } from 'react-native'
+import FooterTabs from './FooterTabs'
+import { Button, StyleSheet, View, Text, ScrollView, ImageBackground } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 
 class DogParkList extends React.Component {
@@ -41,10 +42,12 @@ class DogParkList extends React.Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <Text style={styles.title}>Dog Parks Around Denver:</Text>
+      <View>
+        <Text style={styles.title}>Dog Parks Around Denver</Text>
           {this.state.dogParks.map(park => {
             return(
               <View>
+              <ImageBackground style={styles.backgroundImg} source={park.picture}>
                 <Text 
                   style={styles.parkName}
                   onPress={() => Actions.SpecificDogPark({})}
@@ -52,16 +55,21 @@ class DogParkList extends React.Component {
                   {park.parkName}
                 </Text>
                 <Text style={styles.address}>{park.address}</Text>
+                </ImageBackground>
                 {/* <Button
                   onPress={this.deleteDogPark}
                   title="Delete"
                   color="#841584"
                 /> */}
-              </View>
+              
+            </View>
             )
           })}
 
         <AddDogParkForm listDogParks={this.listDogParks} />
+        
+        <FooterTabs />
+        </View>
       </ScrollView>
     )
   }
@@ -71,24 +79,30 @@ class DogParkList extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f7f7f7",
-    alignItems: 'center'
+    backgroundColor: "#FFF",
   },
   title: {
     fontSize: 30,
-    paddingTop: 20,
+    paddingTop: 25,
+    marginBottom: 50,
     alignSelf: 'center'
   },
   parkName: {
     fontSize: 15,
     fontWeight: 'bold',
-    alignSelf: 'center',
+    // alignSelf: 'center',
+    textAlign: 'center',
     paddingTop: 15
   },
   address: {
     fontSize: 12,
-    alignSelf: 'center',
+    // alignSelf: 'center',
+    textAlign: 'center',
     paddingBottom: 5
+  },
+  backgroundImg: {
+    width: 400,
+    height: 180
   }
 })
 

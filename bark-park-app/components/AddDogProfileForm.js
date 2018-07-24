@@ -12,7 +12,7 @@ class AddDogProfileForm extends React.Component {
       breed: "",
       age: "",
       gender: "",
-      size: "",
+      size: ""
     }
   }
 
