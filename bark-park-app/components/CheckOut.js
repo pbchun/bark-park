@@ -5,21 +5,31 @@ class CheckOut extends Component {
   constructor(props) {
     super (props)
     this.state = {
-      dogList: []
+      name: "",
+      picture: "",
+      breed: "",
+      age: "",
+      gender: "",
+      size: ""
     }
   }
 
-  checkOut = (dog, event) => {
+  checkOut = (event) => {
+    event.preventDefault()
     fetch('https://bark-park-db.herokuapp.com/dogprofile/1', {
-      method: 'DELETE'
+      method: 'PUT',
+      body: JSON.stringify({
+        name: this.props.name,
+        picture: this.props.picture,
+        breed: this.props.breed,
+        age: this.props.age,
+        gender: this.props.gender,
+        size: this.props.size,
+        checkedIn: false
+      }),
+      headers: new Headers({ 'content-type': 'application/JSON' })
     })
-    .then(data => data.text)
-    const dogs = this.state.dogList.slice()
-    const index = dogs.indexOf(dog)
-    dogs.splice(index, 1)
-    this.setState({
-      dogList: dogs
-    })
+    .then(response => response.json())
     .then(response => {this.props.listAllDogs()})
   }
 
@@ -27,7 +37,7 @@ class CheckOut extends Component {
   render() {
     return (
       <View>
-      <TouchableOpacity style={styles.buttonContainer} onPress={this.checkOut}>
+      <TouchableOpacity style={styles.buttonContainer} onPress={(event) => this.checkOut(event)}>
         <Text style={styles.buttonText}>Check-Out</Text>
       </TouchableOpacity>
       </View>

@@ -32,7 +32,6 @@ class CheckIn extends Component {
     })
     .then(response => response.json())
     .then(response => {this.props.listAllDogs()})
-    
   }
 
   render() {
