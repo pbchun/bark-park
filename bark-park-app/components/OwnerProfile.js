@@ -2,7 +2,7 @@ import React from 'react'
 import DogList from './DogList'
 import AddDogProfileForm from './AddDogProfileForm'
 import FooterTabs from './FooterTabs'
-import { ScrollView, Text, StyleSheet, View, TouchableOpacity } from 'react-native'
+import { ScrollView, Text, StyleSheet, View, TouchableOpacity, ImageBackground } from 'react-native'
 import { Avatar } from 'react-native-elements'
 import { Actions } from 'react-native-router-flux'
 
@@ -50,7 +50,8 @@ class OwnerProfile extends React.Component {
   
   render() {
     return(
-      <ScrollView style={styles.container}>
+    <ImageBackground source={require('../public/assets/grass.png')} style={styles.backgroundImg}>
+      <View style={styles.container}>
         <Text style={styles.ownerTitle}>Welcome {this.getOwnerName()}</Text>
 
           <View style={styles.myDogList}>
@@ -78,18 +79,21 @@ class OwnerProfile extends React.Component {
             }
           </View>
 
-        <TouchableOpacity style={styles.buttonContainer}>
-          <Text style={styles.buttonText} onPress={Actions.AddDogProfileForm}>ADD A NEW DOG</Text>
+        <TouchableOpacity style={styles.buttonContainer} onPress={Actions.AddDogProfileForm}>
+          <Text style={styles.buttonText}>ADD A NEW DOG</Text>
         </TouchableOpacity>
       <FooterTabs style={styles.footer} />
-      </ScrollView>
+      </View>
+      </ImageBackground>
   )
 }
 }
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#FFF'
-  },
+  // container: {
+  //   flex: 1,
+  //   backgroundColor: '#FFF',
+  //   alignContents: 'center'
+  // },
   ownerTitle: {
     fontSize: 30,
     alignSelf: 'center',
@@ -122,6 +126,10 @@ const styles = StyleSheet.create({
   },
   footer: {
     position: 'absolute'
+  },
+  backgroundImg: {
+    // height: '100%',
+    width: '100%'
   }
 })
 

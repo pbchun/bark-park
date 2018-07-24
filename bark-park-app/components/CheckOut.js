@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native'
-// import { Container, Header, Content, ListItem, CheckBox, Body } from 'native-base'
 
 class CheckOut extends Component {
   constructor(props) {
@@ -10,7 +9,7 @@ class CheckOut extends Component {
     }
   }
 
-  deleteDog = (dog, event) => {
+  checkOut = (dog, event) => {
     fetch('https://bark-park-db.herokuapp.com/dogprofile/1', {
       method: 'DELETE'
     })
@@ -21,14 +20,15 @@ class CheckOut extends Component {
     this.setState({
       dogList: dogs
     })
+    .then(response => {this.props.listAllDogs()})
   }
 
 
   render() {
     return (
       <View>
-      <TouchableOpacity style={styles.buttonContainer}>
-        <Text style={styles.buttonText} onPress={this.deleteDog}>Check-Out</Text>
+      <TouchableOpacity style={styles.buttonContainer} onPress={this.checkOut}>
+        <Text style={styles.buttonText}>Check-Out</Text>
       </TouchableOpacity>
       </View>
     )

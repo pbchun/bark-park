@@ -1,7 +1,7 @@
 import React from 'react'
-import Login from './Login'
+import HeaderLogo from './HeaderLogo'
 import FooterTabs from './FooterTabs'
-import { StyleSheet, Text, ScrollView, TouchableOpacity, Image, View } from 'react-native'
+import { StyleSheet, Text, ScrollView, TouchableOpacity, Image, View, ImageBackground } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 
 
@@ -10,16 +10,18 @@ class Home extends React.Component {
     return (
 
       <View style={styles.container}>
-      <View>
-        {/* <ImageBackground style={styles.backgroundImg} source={require('.')} */}
+      {/* <HeaderLogo /> */}
+        <ImageBackground source={require('../public/assets/grass.png')} style={styles.backgroundImg}>
+
         <Image source={require('../public/assets/barkparklogo.png')} style={styles.logo} />
 
-        <TouchableOpacity style={styles.buttonContainer}>
-          <Text style={styles.buttonText} onPress={Actions.Login}>LOGIN TO YOUR PROFILE</Text>
+        <TouchableOpacity style={styles.buttonContainer} onPress={Actions.Login}>
+          <Text style={styles.buttonText}>LOGIN TO YOUR PROFILE</Text>
         </TouchableOpacity>
 
         <FooterTabs />
-        </View>
+
+        </ImageBackground>
       </View>
     )
   }
@@ -28,22 +30,25 @@ class Home extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF',
-    // alignItems: 'center',
+    alignItems: 'center'
   },
   logo: {
     alignSelf: 'center',
     height: 145,
-    width:370,
-    marginBottom: 200,
-    marginTop: 150
+    width: '100%',
+    marginBottom: 100,
+    marginTop: 80,
+    opacity: 0.7
+
   },
   buttonContainer: {
     backgroundColor: '#6079a3',
     width: 200,
     paddingVertical: 15,
     alignSelf: 'center',
-    marginBottom: 93
+    marginBottom: 263,
+    // backgroundColor: 'rgba(0,0,0,.5)',
+    opacity: 0.75
   },
   buttonText: {
     textAlign: 'center',
@@ -54,6 +59,10 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     left: 0
+  },
+  backgroundImg: {
+    // height: '100%',
+    width: '100%',
   }
 })
 

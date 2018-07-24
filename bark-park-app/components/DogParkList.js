@@ -1,7 +1,7 @@
 import React from 'react'
-import AddDogParkForm from './AddDogParkForm'
+// import AddDogParkForm from './AddDogParkForm'
 import FooterTabs from './FooterTabs'
-import { Button, StyleSheet, View, Text, ScrollView, ImageBackground } from 'react-native'
+import { Button, StyleSheet, View, Text, ScrollView, ImageBackground, TouchableOpacity } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 
 class DogParkList extends React.Component {
@@ -41,13 +41,12 @@ class DogParkList extends React.Component {
   
   render() {
     return (
-      <ScrollView style={styles.container}>
-      <View>
-        <Text style={styles.title}>Dog Parks Around Denver</Text>
+      <View style={styles.container}>
+        <Text style={styles.title}>Denver Dog Parks</Text>
           {this.state.dogParks.map(park => {
             return(
               <View>
-              <ImageBackground style={styles.backgroundImg} source={park.picture}>
+              <ImageBackground style={styles.backgroundImg} source={{uri : park.picture}}>
                 <Text 
                   style={styles.parkName}
                   onPress={() => Actions.SpecificDogPark({})}
@@ -65,12 +64,14 @@ class DogParkList extends React.Component {
             </View>
             )
           })}
+        {/* <AddDogParkForm listDogParks={this.listDogParks} /> */}
 
-        <AddDogParkForm listDogParks={this.listDogParks} />
-        
+        <TouchableOpacity style={styles.buttonContainer} onPress={Actions.AddDogParkForm}>
+          <Text style={styles.buttonText}>ADD A NEW DOG PARK</Text>
+        </TouchableOpacity>
+
         <FooterTabs />
-        </View>
-      </ScrollView>
+      </ View>
     )
   }
 }
@@ -80,30 +81,51 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFF",
+    alignContent: 'center'
   },
   title: {
     fontSize: 30,
-    paddingTop: 25,
-    marginBottom: 50,
+    marginTop: 4,
+    marginBottom: 4,
     alignSelf: 'center'
   },
   parkName: {
     fontSize: 15,
     fontWeight: 'bold',
-    // alignSelf: 'center',
-    textAlign: 'center',
-    paddingTop: 15
+    paddingTop: 135,
+    paddingLeft: 4,
+    color: 'white',
+    textShadowColor: '#252525',
+    textShadowOffset: {width: 3, height: 3},
+    textShadowRadius: 15
   },
   address: {
     fontSize: 12,
-    // alignSelf: 'center',
-    textAlign: 'center',
-    paddingBottom: 5
+    paddingLeft: 4, 
+    color: "white",
+    textShadowColor: '#252525',
+    textShadowOffset: {width: 3, height: 3},
+    textShadowRadius: 15
+
   },
   backgroundImg: {
     width: 400,
-    height: 180
-  }
+    height: 180,
+    // opacity: 0.5
+  },
+  buttonContainer: {
+    backgroundColor: '#6079a3',
+    width: 200,
+    paddingVertical: 15,
+    alignSelf: 'center',
+    marginBottom: 5,
+    marginTop: 5,
+    opacity: 0.5
+  },
+  buttonText: {
+    textAlign: 'center',
+    color: '#FFF'
+  },
 })
 
 export default DogParkList

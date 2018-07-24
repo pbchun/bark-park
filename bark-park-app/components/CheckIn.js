@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { StyleSheet, TouchableOpacity, View , Text} from 'react-native'
-import { Avatar } from 'react-native-elements'
-// import { Container, Header, Content, ListItem, CheckBox, Text, Body } from 'native-base'
 
 class CheckIn extends Component {
   constructor(props) {
@@ -19,7 +17,6 @@ class CheckIn extends Component {
 
   handleCheckIn = (event) => {
     event.preventDefault()
-    console.log("Test")
     fetch('https://bark-park-db.herokuapp.com/dogprofile/1', {
       method: 'PUT',
       body: JSON.stringify({

@@ -107,7 +107,7 @@ class AddDogProfileForm extends React.Component {
 
 const styles = StyleSheet.create({
   addDogForm: {
-    paddingBottom: 150,
+    // paddingBottom: 150,
     paddingTop: 30
   },
   addDogTitle: {

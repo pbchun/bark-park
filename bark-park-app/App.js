@@ -1,7 +1,7 @@
 import React from 'react'
 import Home from './components/Home'
 import FooterTabs from './components/FooterTabs'
-import HeaderNav from './components/HeaderNav'
+import HeaderLogo from './components/HeaderLogo'
 import Login from './components/Login'
 import CheckIn from './components/CheckIn'
 import CheckOut from './components/CheckOut'
@@ -19,23 +19,15 @@ const App = () => {
       
       <Router navigationBarStyle={styles.navBar}>
         <Scene key="root">
-
-        {/* <Scene key="FooterTabs" component={FooterTabs} /> */}
-
-          {/* <Scene style={styles.navTab} key="tabbar" tabs tabBarStyle={{backgroundColor: '#5b89d3'}}>
-              <Scene key="home" component={Home} initial />
-              <Scene key="ownerProfile" component={OwnerProfile} />
-              <Scene key="dogpark" component={DogParkList} />
-          </Scene> */}
           <Scene key="Home" component={Home} initial />
           <Scene key="Login" component={Login} />
           <Scene key="OwnerProfile" component={OwnerProfile} />
           <Scene key="DogParkList" component={DogParkList} />
           <Scene key="SpecificDogPark" component={SpecificDogPark} />
           <Scene key="AddDogProfileForm" component={AddDogProfileForm} />
+          <Scene key="AddDogParkForm" component={AddDogParkForm} />
           <Scene key="CheckIn" component={CheckIn} />
           <Scene key="CheckOut" component={CheckOut} />
-
         </Scene>
       </Router>
     )

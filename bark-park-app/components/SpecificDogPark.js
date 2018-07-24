@@ -49,14 +49,14 @@ class SpecificDogPark extends React.Component {
 
   render() {
     return(
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
+      <View >
       <ImageBackground source={require('../public/assets/railyard1.jpg')} style={styles.railyardImg}>
         <Text style={styles.title}>Rail Yard Dog Park</Text>
         </ImageBackground>
         {/* <CheckIn id={dog.id} name={dog.name} picture={dog.picture} breed={dog.breed} age={dog.age} gender={dog.gender} size={dog.size} listAllDogs={this.listAllDogs} /> */}
-      <ScrollView>
-        <CheckIn checkIn={this.checkIn} updateDogs={this.componentDidMount} listAllDogs={this.listAllDogs} />
-        <CheckOut />
+        <CheckIn listAllDogs={this.listAllDogs} />
+        <CheckOut listAllDogs={this.listAllDogs} />
 
         {this.filterDogs().map(dog => {
           return(
@@ -83,23 +83,26 @@ class SpecificDogPark extends React.Component {
           )
         })}
 
-      </ScrollView>
       </View>
+      </ScrollView>
     )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    alignContent: 'center'
   },
   title: {
     textAlign: 'center',
     fontSize: 30,
     paddingBottom: 215,
-    paddingTop: 10,
     fontWeight: 'bold',
-    color: 'rgba(0,0,0,0.5)'
+    color: 'white',
+    textShadowColor: '#252525',
+    textShadowOffset: {width: 3, height: 3},
+    textShadowRadius: 15
   },
   dogList: {
     alignItems: 'center',

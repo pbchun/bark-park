@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
-import { Container, Content, Footer, FooterTab, Button, Icon, Text } from 'native-base'
+import { Container, Footer, FooterTab, Button, Icon, Text } from 'native-base'
 import { Actions } from '../node_modules/react-native-router-flux';
 
 
@@ -9,7 +9,6 @@ class FooterTabs extends Component {
   render() {
     return (
       <Container>
-        {/* <Content /> */}
         <Footer style={styles.Footer}>
           <FooterTab>
             <Button vertical onPress={Actions.Home}>
