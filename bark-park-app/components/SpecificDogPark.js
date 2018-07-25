@@ -38,7 +38,6 @@ class SpecificDogPark extends React.Component {
 
 
   checkIn = (dog) => {
-    console.log("Here", dog)
     const newDogs = this.state.checkedInDogs.concat(dog)
     this.setState({
       checkedInDogs: newDogs
@@ -53,7 +52,6 @@ class SpecificDogPark extends React.Component {
       <ImageBackground source={require('../public/assets/railyard1.jpg')} style={styles.railyardImg}>
         <Text style={styles.title}>Rail Yard Dog Park</Text>
         </ImageBackground>
-        {/* <CheckIn id={dog.id} name={dog.name} picture={dog.picture} breed={dog.breed} age={dog.age} gender={dog.gender} size={dog.size} listAllDogs={this.listAllDogs} /> */}
 
         {this.filterDogs().map(dog => {
           return(
