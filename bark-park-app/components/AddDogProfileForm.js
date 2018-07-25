@@ -128,10 +128,11 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   buttonContainer: {
-    backgroundColor: '#6079a3',
+    backgroundColor: '#6193BB',
     width: 200,
     paddingVertical: 15,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    borderRadius: 15
   },
   buttonText: {
     textAlign: 'center',

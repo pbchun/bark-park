@@ -50,9 +50,9 @@ class OwnerProfile extends React.Component {
   
   render() {
     return(
-    <ImageBackground source={require('../public/assets/grass.png')} style={styles.backgroundImg}>
+    <ImageBackground source={require('../public/assets/grass3.png')} style={styles.backgroundImg}>
       <View style={styles.container}>
-        <Text style={styles.ownerTitle}>Welcome {this.getOwnerName()}</Text>
+        <Text style={styles.ownerTitle}>Welcome {this.getOwnerName()}!</Text>
 
           <View style={styles.myDogList}>
             {this.state.dogList.filter(dog => {
@@ -101,12 +101,13 @@ const styles = StyleSheet.create({
     paddingTop: 50
   },
   buttonContainer: {
-    backgroundColor: '#6079a3',
-    width: 200,
+    backgroundColor: '#6193BB',
+    width: 160,
     paddingVertical: 15,
     alignSelf: 'center',
-    marginBottom: 123,
-    marginTop: 50
+    marginBottom: 208,
+    marginTop: 50,
+    borderRadius: 15
   },
   buttonText: {
     textAlign: 'center',
@@ -114,8 +115,8 @@ const styles = StyleSheet.create({
   },
   myDogList: {
     alignSelf: 'center',
-    marginBottom: 100,
-    paddingTop: 35
+    marginBottom: 30,
+    paddingTop: 20
   },
   dogName: {
     alignSelf: 'center',

@@ -42,7 +42,7 @@ class DogParkList extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Denver Dog Parks</Text>
+        {/* <Text style={styles.title}>Denver Dog Parks</Text> */}
           {this.state.dogParks.map(park => {
             return(
               <View>
@@ -80,7 +80,7 @@ class DogParkList extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFF",
+    backgroundColor: "#D9D9D9",
     alignContent: 'center'
   },
   title: {
@@ -114,13 +114,13 @@ const styles = StyleSheet.create({
     // opacity: 0.5
   },
   buttonContainer: {
-    backgroundColor: '#6079a3',
+    backgroundColor: '#6193BB',
     width: 200,
     paddingVertical: 15,
     alignSelf: 'center',
-    marginBottom: 5,
-    marginTop: 5,
-    opacity: 0.5
+    marginBottom: 24,
+    marginTop: 24,
+    borderRadius: 15
   },
   buttonText: {
     textAlign: 'center',

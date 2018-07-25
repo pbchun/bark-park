@@ -33,7 +33,7 @@ class FooterTabs extends Component {
 const styles = StyleSheet.create({
   Footer: {
     backgroundColor: '#6079a3',
-    position: 'fixed'
+    // position: 'fixed'
   },
   footerText: {
     color: '#FFF'

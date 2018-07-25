@@ -28,7 +28,6 @@ class SpecificDogPark extends React.Component {
 
   componentDidMount() {
     this.listAllDogs()
-    console.log("Hi")
   }
 
   filterDogs = (dogId) => {

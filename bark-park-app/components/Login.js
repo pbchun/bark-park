@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 40,
     marginBottom: 50,
+    opacity: 0.8
   },
   input: {
     width: 200,
@@ -60,22 +61,24 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   buttonContainer: {
-    backgroundColor: '#6079a3',
-    width: 200,
+    backgroundColor: '#6193BB',
+    width: 125,
     paddingVertical: 15,
     alignSelf: 'center',
-    marginTop: 5
+    marginTop: 5,
+    borderRadius: 15
   },
   buttonText: {
     textAlign: 'center',
     color: '#FFF'
   },
   nextButtonContainer: {
-    backgroundColor: '#6079a3',
-    width: 150,
+    backgroundColor: '#6193BB',
+    width: 160,
     paddingVertical: 15,
     alignSelf: 'center',
-    marginTop: 345
+    marginTop: 345,
+    borderRadius: 15
   },
   backgroundImg: {
     width: '100%',
