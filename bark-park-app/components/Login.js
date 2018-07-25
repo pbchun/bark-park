@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   buttonContainer: {
-    backgroundColor: '#6079a3',
+    backgroundColor: '#F19F4D',
     width: 125,
     paddingVertical: 15,
     alignSelf: 'center',
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     color: '#FFF'
   },
   nextButtonContainer: {
-    backgroundColor: '#6079a3',
+    backgroundColor: '#F19F4D',
     width: 160,
     paddingVertical: 15,
     alignSelf: 'center',

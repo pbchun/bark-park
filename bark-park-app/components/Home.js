@@ -32,16 +32,16 @@ const styles = StyleSheet.create({
   },
   logo: {
     alignSelf: 'center',
-    height: 145,
-    width: 380,
-    marginBottom: 274,
+    height: 140,
+    width:375,
+    marginBottom: 279,
     marginTop: 130,
     // paddingTop: 50
     // opacity: 0.7
 
   },
   buttonContainer: {
-    backgroundColor: '#6079a3',
+    backgroundColor: '#F19F4D',
     width: 150,
     paddingVertical: 12,
     alignSelf: 'center',

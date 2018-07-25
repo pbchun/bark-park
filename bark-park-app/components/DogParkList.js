@@ -112,14 +112,14 @@ const styles = StyleSheet.create({
     // opacity: 0.5
   },
   buttonContainer: {
-    backgroundColor: '#6079a3',
+    backgroundColor: '#F19F4D',
     width: 200,
     paddingVertical: 15,
     alignSelf: 'center',
     marginBottom: 24,
     marginTop: 24,
     borderRadius: 8,
-    opacity: 0.8
+    opacity: 0.95
   },
   buttonText: {
     textAlign: 'center',

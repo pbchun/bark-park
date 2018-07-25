@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     paddingTop: 50
   },
   buttonContainer: {
-    backgroundColor: '#6079a3',
+    backgroundColor: '#F19F4D',
     width: 160,
     paddingVertical: 12,
     alignSelf: 'center',
