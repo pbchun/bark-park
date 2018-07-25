@@ -1,5 +1,4 @@
 import React from 'react'
-// import AddDogParkForm from './AddDogParkForm'
 import FooterTabs from './FooterTabs'
 import { Button, StyleSheet, View, Text, ScrollView, ImageBackground, TouchableOpacity } from 'react-native'
 import { Actions } from 'react-native-router-flux'
@@ -26,23 +25,22 @@ class DogParkList extends React.Component {
       this.listDogParks();
   }
 
-  // deleteDogPark = (park, event) => {
-  //   fetch(`https://bark-park-db.herokuapp.com/${park.id}`, {
-  //     method: 'DELETE'
-  //   })
-  //   .then(data => data.text)
-  //   const dogpark = this.state.dogParks.slice()
-  //   const index = dogpark.indexOf(park)
-  //   dogpark.splice(index, 1)
-  //   this.setState({
-  //     dogParks: dogpark
-  //   })
-  // }
+  deleteDogPark = (park, event) => {
+    fetch(`https://bark-park-db.herokuapp.com/${park.id}`, {
+      method: 'DELETE'
+    })
+    .then(data => data.text)
+    const dogpark = this.state.dogParks.slice()
+    const index = dogpark.indexOf(park)
+    dogpark.splice(index, 1)
+    this.setState({
+      dogParks: dogpark
+    })
+  }
   
   render() {
     return (
       <View style={styles.container}>
-        {/* <Text style={styles.title}>Denver Dog Parks</Text> */}
           {this.state.dogParks.map(park => {
             return(
               <View>
@@ -55,6 +53,7 @@ class DogParkList extends React.Component {
                 </Text>
                 <Text style={styles.address}>{park.address}</Text>
                 </ImageBackground>
+                
                 {/* <Button
                   onPress={this.deleteDogPark}
                   title="Delete"
@@ -64,14 +63,13 @@ class DogParkList extends React.Component {
             </View>
             )
           })}
-        {/* <AddDogParkForm listDogParks={this.listDogParks} /> */}
 
         <TouchableOpacity style={styles.buttonContainer} onPress={Actions.AddDogParkForm}>
           <Text style={styles.buttonText}>ADD A NEW DOG PARK</Text>
         </TouchableOpacity>
 
         <FooterTabs />
-      </ View>
+      </View>
     )
   }
 }
@@ -80,7 +78,7 @@ class DogParkList extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#D9D9D9",
+    backgroundColor: "#FFF",
     alignContent: 'center'
   },
   title: {
@@ -114,18 +112,23 @@ const styles = StyleSheet.create({
     // opacity: 0.5
   },
   buttonContainer: {
-    backgroundColor: '#6193BB',
+    backgroundColor: '#6079a3',
     width: 200,
     paddingVertical: 15,
     alignSelf: 'center',
     marginBottom: 24,
     marginTop: 24,
-    borderRadius: 15
+    borderRadius: 8,
+    opacity: 0.8
   },
   buttonText: {
     textAlign: 'center',
-    color: '#FFF'
-  },
+    color: '#FFF',
+    // fontSize: 18,
+    // fontWeight: '700',
+    // marginTop: 37,
+    // marginBottom: 37
+  }
 })
 
 export default DogParkList

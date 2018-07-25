@@ -77,12 +77,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   buttonContainer: {
-    backgroundColor: '#6193BB',
+    backgroundColor: '#6079a3',
     width: 180,
     paddingVertical: 15,
     alignSelf: 'center',
     marginBottom: 80,
-    borderRadius: 15
+    borderRadius: 8,
+    opacity: 0.8
   },
   buttonText: {
     textAlign: 'center',

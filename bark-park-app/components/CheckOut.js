@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
     width: 100,
     paddingVertical: 15,
     alignSelf: 'center',
-    marginBottom: 45
+    marginBottom: 45,
+    borderRadius: 15
   },
   buttonText: {
     textAlign: 'center',

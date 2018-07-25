@@ -17,7 +17,7 @@ import AddDogParkForm from './components/AddDogParkForm';
 const App = () => {
     return (
       <Router navigationBarStyle={styles.navBar}>
-        <Scene key="root">
+        <Scene key="root" tintColor= "white">
           <Scene key="Home" component={Home} initial />
           <Scene key="Login" component={Login} />
           <Scene key="OwnerProfile" component={OwnerProfile} />
@@ -34,7 +34,8 @@ const App = () => {
 
 const styles = StyleSheet.create({
   navBar: {
-    backgroundColor: '#6079a3', 
+    backgroundColor: '#4484CE',
+    // '#6079a3', 
     paddingTop: 0,
   }
 })

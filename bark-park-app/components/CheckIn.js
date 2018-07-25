@@ -47,12 +47,13 @@ class CheckIn extends Component {
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    backgroundColor: '#0FAF04',
+    backgroundColor: '#48BF84',
     width: 100,
     paddingVertical: 15,
     alignSelf: 'center',
     marginBottom: 8,
-    marginTop: 20
+    marginTop: 20,
+    borderRadius: 15
   },
   buttonText: {
     textAlign: 'center',

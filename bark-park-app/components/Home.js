@@ -14,7 +14,7 @@ class Home extends React.Component {
         <Image source={require('../public/assets/logo.png')} style={styles.logo} />
 
         <TouchableOpacity style={styles.buttonContainer} onPress={Actions.Login}>
-          <Text style={styles.buttonText}>LOGIN TO YOUR PROFILE</Text>
+          <Text style={styles.buttonText}>LOGIN</Text>
         </TouchableOpacity>
 
         <FooterTabs />
@@ -27,34 +27,35 @@ class Home extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF'
+    backgroundColor: '#FFF',
+    width: '100%'
   },
   logo: {
     alignSelf: 'center',
-    height: 140,
-    width: '95%',
-    marginBottom: 80,
-    marginTop: 80,
+    height: 145,
+    width: 380,
+    marginBottom: 274,
+    marginTop: 130,
     // paddingTop: 50
     // opacity: 0.7
 
   },
   buttonContainer: {
-    backgroundColor: '#6193BB',
-    width: 200,
-    paddingVertical: 15,
+    backgroundColor: '#6079a3',
+    width: 150,
+    paddingVertical: 12,
     alignSelf: 'center',
-    marginBottom: 288,
-    borderRadius: 15
-    // backgroundColor: 'rgba(0,0,0,.5)',
-    // opacity: 0.75
+    marginBottom: 45,
+    borderRadius: 8,
+    opacity: 0.9
   },
   buttonText: {
     textAlign: 'center',
-    color: '#FFF'
+    color: '#FFF',
+    fontWeight: '500'
   },
   backgroundImg: {
-
+    width: '100%'
   }
 })
 

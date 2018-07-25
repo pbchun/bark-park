@@ -63,7 +63,7 @@ class OwnerProfile extends React.Component {
               return(
                 <View>
                 <Avatar 
-                large 
+                xlarge 
                 rounded 
                 source={{uri: `${dog.picture}`}}
                 style={styles.dogPic} 
@@ -101,26 +101,29 @@ const styles = StyleSheet.create({
     paddingTop: 50
   },
   buttonContainer: {
-    backgroundColor: '#6193BB',
+    backgroundColor: '#6079a3',
     width: 160,
-    paddingVertical: 15,
+    paddingVertical: 12,
     alignSelf: 'center',
-    marginBottom: 208,
+    marginBottom: 36,
     marginTop: 50,
-    borderRadius: 15
+    borderRadius: 8,
+    opacity: 0.9
   },
   buttonText: {
     textAlign: 'center',
-    color: '#FFF'
+    color: '#FFF',
+    fontWeight: '500'
   },
   myDogList: {
     alignSelf: 'center',
-    marginBottom: 30,
+    marginBottom: 126,
     paddingTop: 20
   },
   dogName: {
     alignSelf: 'center',
-    paddingBottom: 4
+    paddingBottom: 4,
+    fontSize: 20
   },
   eachDog: {
     alignSelf: 'center'

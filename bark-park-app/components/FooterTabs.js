@@ -9,9 +9,9 @@ class FooterTabs extends Component {
   render() {
     return (
       <Container>
-        <Footer style={styles.Footer}>
-          <FooterTab>
-            <Button vertical onPress={Actions.Home}>
+        <Footer style={styles.footer}>
+          <FooterTab style={styles.footerNav}>
+            <Button vertical onPress={Actions.Home} Active>
               <Icon style={styles.footerIcon} name="home" />
               <Text style={styles.footerText}>Home</Text>
             </Button>
@@ -31,9 +31,9 @@ class FooterTabs extends Component {
 }
 
 const styles = StyleSheet.create({
-  Footer: {
-    backgroundColor: '#6079a3',
-    // position: 'fixed'
+  footer: {
+    backgroundColor: '#4484CE',
+    // '#6079a3'
   },
   footerText: {
     color: '#FFF'

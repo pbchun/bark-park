@@ -54,14 +54,12 @@ class SpecificDogPark extends React.Component {
         <Text style={styles.title}>Rail Yard Dog Park</Text>
         </ImageBackground>
         {/* <CheckIn id={dog.id} name={dog.name} picture={dog.picture} breed={dog.breed} age={dog.age} gender={dog.gender} size={dog.size} listAllDogs={this.listAllDogs} /> */}
-        <CheckIn listAllDogs={this.listAllDogs} />
-        <CheckOut listAllDogs={this.listAllDogs} />
 
         {this.filterDogs().map(dog => {
           return(
             <View style={styles.dogList} key={dog.id}>
               <Avatar 
-                large 
+                xlarge 
                 rounded 
                 source={{uri: `${dog.picture}`}}
                 style={styles.dogPic} 
@@ -82,6 +80,8 @@ class SpecificDogPark extends React.Component {
           )
         })}
 
+        <CheckIn listAllDogs={this.listAllDogs} />
+        <CheckOut listAllDogs={this.listAllDogs} />
       </View>
       </ScrollView>
     )
@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 30,
     paddingBottom: 215,
+    paddingTop: 12,
     fontWeight: 'bold',
     color: 'white',
     textShadowColor: '#252525',
@@ -109,14 +110,15 @@ const styles = StyleSheet.create({
   },
   dogName: {
     alignSelf: 'center',
-    fontSize: 15
+    fontSize: 20
   },
   eachDog: {
     alignSelf: 'center'
   },
   railyardImg: {
     height: 250,
-    width: 400
+    width: 400,
+    marginBottom: 45
   }
 })
 
