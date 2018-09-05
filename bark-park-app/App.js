@@ -33,7 +33,6 @@ const App = () => {
 const styles = StyleSheet.create({
   navBar: {
     backgroundColor: '#4484CE',
-    // '#6079a3', 
     paddingTop: 0,
   }
 })
