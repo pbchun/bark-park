@@ -1,7 +1,5 @@
 import React from 'react'
 import Home from './components/Home'
-import FooterTabs from './components/FooterTabs'
-import HeaderLogo from './components/HeaderLogo'
 import Login from './components/Login'
 import CheckIn from './components/CheckIn'
 import CheckOut from './components/CheckOut'
